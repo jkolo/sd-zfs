@@ -141,7 +141,11 @@ int generateScanUnit(char *directory, const char *targetName, const char *unitNa
 	// Make symlink
 	strcat(targetpath, "/");
 	strcat(targetpath, unitName);
-	symlink(unitName, targetpath);
+	char *relativeUnit = malloc((strlen("../") + strlen(unitName) + 1) * sizeof(char));
+	strcpy(relativeUnit, "../");
+	strcat(relativeUnit, unitName);
+	symlink(relativeUnit, targetpath);
+	free(relativeUnit);
 	// Check if unit already exists
 	if (access(unitpath, R_OK) != -1) {
 		perror("Scanning unit file already exists or cannot be accessed\n");
@@ -212,7 +216,11 @@ int generateCacheUnit(char *directory, const char *targetName, const char *unitN
 	// Make symlink
 	strcat(targetpath, "/");
 	strcat(targetpath, unitName);
-	symlink(unitName, targetpath);
+	char *relativeUnit = malloc((strlen("../") + strlen(unitName) + 1) * sizeof(char));
+	strcpy(relativeUnit, "../");
+	strcat(relativeUnit, unitName);
+	symlink(relativeUnit, targetpath);
+	free(relativeUnit);
 	// Check if unit already exists
 	if (access(unitpath, R_OK) != -1) {
 		free(unitpath);
