@@ -45,16 +45,4 @@ build() {
 		DD="$(hostid | cut -b 7,8)"
 		printf "\x${DD}\x${CC}\x${BB}\x${AA}" > "${BUILDROOT}/etc/hostid"
 	fi
-
-	# systemd 258+ requires explicit preset for initrd services
-	# Default initrd preset policy is "disabled", so we need to enable ZFS import services
-	mkdir -p "${BUILDROOT}/usr/lib/systemd/initrd-preset"
-	cat > "${BUILDROOT}/usr/lib/systemd/initrd-preset/50-sd-zfs.preset" << 'EOF'
-# Preset file for sd-zfs in initrd
-# Required for systemd 258+ which defaults initrd presets to disabled
-#
-# Enable ZFS import services needed for root filesystem
-enable zfs-import-cache.service
-enable zfs-import-scan.service
-EOF
 }
