@@ -7,7 +7,7 @@ url='https://github.com/jkolo/sd-zfs'
 conflicts=('mkinitcpio-sd-zfs-git')
 depends=('mkinitcpio' 'systemd')
 source=("https://github.com/jkolo/sd-zfs/archive/v${pkgver}.tar.gz")
-sha512sums=('04ceb91cf0c1d54a787ab3ac028c4b930eb948ee71d1b07b45b8faa8cbae08a3458f0d2f9e076ea8f19a344cc44a9e155ec59f4f5f4e45ef0d851b2ac12880b8')
+sha512sums=('1488d13cb8cd9b9c9c2670ee6c77885de73507bcd55183c013a5be313878b08873ce71b07481b00ab13e1e1d7631f4b1b05e8c4fa4ff3223eef640bf39b981b4')
 arch=('i686' 'x86_64')
 
 build() {
